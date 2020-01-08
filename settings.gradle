@@ -1,0 +1,2 @@
+include ':app', ':mylogger'
+rootProject.name='LogTest'
