@@ -1,9 +1,26 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+ext {
+    PUBLISH_GROUP_ID = 'www.shencode.mylogger'
+    PUBLISH_ARTIFACT_ID = 'mylogger'
+    PUBLISH_VERSION = '0.1.0'
+}
+
+publish {
+    userOrg = 'llhswwha@gmail.com' // bintray用户名
+    repoName = 'Android' // bintray仓库名
+    groupId = 'www.shencode.mylogger' // 决定最后依赖的路径
+    artifactId = 'mylogger' // 决定最后依赖的名称
+    publishVersion = '0.1.0' // 决定最后依赖的版本号
+    desc = 'AndroidLogTest' // 描述
+    website = 'https://github.com/llhswwha/AndroidLogTest' // 项目网站，可以用 Github 地址
+    dryRun = false // true-仅运行  false-运行+上传
+}
 
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
-
 
     defaultConfig {
         minSdkVersion 21
@@ -33,4 +50,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation 'com.orhanobut:logger:2.2.0'
+    implementation 'com.novoda:bintray-release:0.9'
 }
+
+// Copy the file locally and use
+//apply from: 'android-release-aar.gradle'
+// or use the remote copy to keep update with latest changes
+//apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
